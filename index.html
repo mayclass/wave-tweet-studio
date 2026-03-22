@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WaveTweet Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="bg-shape bg-shape-a"></div>
+    <div class="bg-shape bg-shape-b"></div>
+
+    <header class="hero">
+      <p class="hero-kicker">Tweet Studio</p>
+      <h1>Minimal, Timeless Tweet Exports</h1>
+      <p class="hero-sub">
+        Paste an X/Twitter link, adjust subtle visual style, and export a polished card that feels modern and evergreen.
+      </p>
+    </header>
+
+    <main class="layout">
+      <section class="panel controls">
+        <h2>1. Paste Tweet Link</h2>
+        <div class="field-group">
+          <label for="tweetUrl">Tweet URL</label>
+          <input id="tweetUrl" type="url" placeholder="https://x.com/user/status/1234567890123456789" />
+        </div>
+        <div class="row">
+          <button id="loadTweetBtn" class="btn primary">Load Tweet</button>
+          <button id="clearBtn" class="btn ghost">Clear</button>
+        </div>
+        <p id="status" class="status">Paste a URL and click "Load Tweet".</p>
+
+        <h2>2. Design Settings</h2>
+        <div class="field-group">
+          <label for="bgStyle">Background style</label>
+          <select id="bgStyle">
+            <option value="sunset">Ivory Mist</option>
+            <option value="ocean">Powder Blue</option>
+            <option value="forest">Warm Linen</option>
+            <option value="mono">Soft Pearl</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label for="exportAspect">Export aspect</label>
+          <select id="exportAspect">
+            <option value="square">Square (1:1)</option>
+            <option value="portrait" selected>Portrait (4:5)</option>
+            <option value="story">Story (9:16)</option>
+          </select>
+        </div>
+        <div class="field-group inline">
+          <label for="cardRadius">Card radius</label>
+          <input id="cardRadius" type="range" min="8" max="34" value="20" />
+        </div>
+        <div class="row">
+          <button id="downloadMediaBtn" class="btn secondary" disabled>Download Media</button>
+          <button id="exportCardBtn" class="btn primary">Export PNG</button>
+        </div>
+      </section>
+
+      <section class="panel preview-wrap">
+        <h2>Live Preview</h2>
+        <div class="card-stage">
+          <article id="designCard" class="design-card theme-sunset preset-portrait">
+            <div class="design-overlay"></div>
+            <div class="card-content">
+              <div class="tweet-shell">
+                <div class="tweet-top">
+                  <img id="tweetAvatar" alt="Profile" hidden crossorigin="anonymous" />
+                  <span id="tweetAvatarFallback">U</span>
+                  <span id="tweetAuthor">@unknown</span>
+                </div>
+                <p id="tweetText">Tweet content will appear here after loading a URL.</p>
+                <img id="tweetMedia" alt="Tweet media" hidden />
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
